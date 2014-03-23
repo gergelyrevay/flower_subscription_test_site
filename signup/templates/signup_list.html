@@ -1,0 +1,15 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_title %}Signups | {% endblock %}
+
+{% block page_content %}
+<h1> Signups</h1>
+
+<ul>
+	{% for signup in signup_list %}
+	<li>{{signup.email_address}}</li>
+	{% empty %}
+	<li> Sorry, no signups</li>
+	{% endfor %}
+</ul>
+{% endblock %}

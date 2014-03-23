@@ -50,6 +50,9 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'south',
+    'signup',
+
 )
 
 MIDDLEWARE_CLASSES = (
@@ -76,16 +79,13 @@ DATABASES = {
     }
 }
 
-# Internationalization
-# https://docs.djangoproject.com/en/1.6/topics/i18n/
+THIRD_PARTY_APPS = (
+    'south',
+)
 
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
-USE_I18N = True
-
-USE_L10N = True
+LOCAL_APPS = (
+    'signup',
+)
 
 USE_TZ = True
 
@@ -95,7 +95,7 @@ USE_TZ = True
 STATIC_ROOT = root('..', 'static')
 
 STATICFILES_DIRS = (
-    root('assets'),
+    root('..', 'assets'),
 )
 
 STATIC_URL = '/static/'

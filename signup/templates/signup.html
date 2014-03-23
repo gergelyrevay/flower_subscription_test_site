@@ -1,0 +1,13 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_title %}Signups{% endblock %}
+
+{% block page_content %}
+<h1> Signup</h1>
+
+<form action='POST' href="{% url 'signup_save' %}" id='signup_form'>
+	<input type=FIXME name='email_address' id='email_address'>FIXME: text</input>
+	<input type='textarea' name='free_text_feedback' id='free_text_feedback' > FIXME:text</input>
+	<input type='submit' name='submit' id='submit'>FIXME :text</input>
+</form>
+{% endblock %}

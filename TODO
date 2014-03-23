@@ -1,0 +1,11 @@
+FIXME 
+- syncdb
+- sync db between machines
+- implement questionaire or us 3rd party
+
+To implement a new view:
+ - create template for view (html)
+ - create class/function in view.py
+ - create url in url.py
+ 	- import view
+ 	- create url line
