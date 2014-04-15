@@ -1,0 +1,16 @@
+{% extends "_layouts/base.html" %}
+
+{% block page_title %}FAQ | {% endblock %}
+
+{% block page_content %}
+<h1>Frequently Asked Questions</h1>
+
+<ul>
+	{% for question_and_answer in faq_list %}
+	<li>{{question_and_answer.faq_question}}</li>
+	<li>{{question_and_answer.faq_answer}}</li>
+	{% empty %}
+	<li> Sorry, no FAQ</li>
+	{% endfor %}
+</ul>
+{% endblock %}

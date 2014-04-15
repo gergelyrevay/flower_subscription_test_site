@@ -6,10 +6,10 @@
 <h1> Signups</h1>
 
 <ul>
-	{% for signup in signup_list %}
-	<li>{{signup.email_address}}</li>
-	{% empty %}
-	<li> Sorry, no signups</li>
-	{% endfor %}
+    {% for signup in signup_list %}
+    <li>{{signup.email_address}}</li>
+    {% empty %}
+    <li> Sorry, no signups</li>
+    {% endfor %}
 </ul>
 {% endblock %}

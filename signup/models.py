@@ -1,43 +1,48 @@
 from django.db import models
-# from django.core.urlresolvers import reverse
 
-# Create your models here.
 class Signup(models.Model):
-	signed_up_at = models.DateTimeField(auto_now_add=True, editable=False)
-	email_address = models.EmailField()
-	feedback_text = models.TextField()
-	# questionaire = models.ForeignKey(Questionaire, related_name='signup')
+    """ Simple signup with email and free text feedback.
+    """
+    signed_up_at = models.DateTimeField(auto_now_add=True, editable=False)
+    email_address = models.EmailField()
+    feedback_text = models.TextField()
 
 # defines ordering
-	class Meta:
-		ordering = ['-signed_up_at', 'email_address']
+    class Meta:
+        ordering = ['-signed_up_at', 'email_address']
 
-	def __unicode__(self):
-		return self.email_address
+    def __unicode__(self):
+        return self.email_address
 
-	def save(self, *args, **kwargs):
-		super(Signup, self).save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        super(Signup, self).save(*args, **kwargs)
 
-	# def get_absolute_url(self):
-		# return reverse('signup-detail', kwargs=('pk':self.pk))
-		
-# class Question(models.Model):
-# 	question_text = models.CharField(max_length=200)
-# 	answer = models.TextField()
+    # def get_absolute_url(self):
+        # return reverse('signup-detail', kwargs=('pk':self.pk))
+        
+class Question(models.Model):
+    """ Question table. Answer can be freetext or multiplechoice,
+    and choices can be defined.
+    """
+    question_text = models.CharField(max_length=200)
+    choices = models.CharField(max_length=500, blank=True, null=True)
+    answer_type = models.CharField(max_length=6, choices=((u"1", u"freetext"), (u"2", "multiplechoice")))
 
-# class Answer(models.Model):
-# 	answer_text = models.TextField()
+    def __unicode__(self):
+        return self.question_text   
 
-# # FIXME how to do such think as various answer types and stuff
+class Answer(models.Model):
+    """ The final answers are stored here, connected to
+    the question object and the particular signup where they were given.
+    """
+    answer_text = models.TextField()
+    question = models.ForeignKey(Question, related_name="answers", blank=True, null=True)
+    signup = models.ForeignKey(Signup, related_name="answers", blank=True, null=True)
 
-# class FreeTextAnswer(Answer):
-# 	#FIXME is anything needed here?
-
-# class MultiChoiceAnswer(Answer):
-# 	possible_answers = [] #FIXME what should this be
-# 	choosen_answer = models.TextField()
-# 	is_more_answer_allowed = models.Boolean() #FIXME does this exist?
-
-# class Questionaire(models.Model):
-# 	questions = [] #how to create list of Question()
-# 	answer = [] # how to create a list of Answer()
+class Questionaire(models.Model):
+    """ Defined questionaires by ordering a set of question to it.
+    Only one questionaire can be active at a time.
+    """
+    name = models.CharField(max_length=50)
+    is_active = models.BooleanField(default=False)
+    questions = models.ManyToManyField(Question)

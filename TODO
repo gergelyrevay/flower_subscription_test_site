@@ -1,7 +1,11 @@
 FIXME 
-- syncdb
-- sync db between machines
-- implement questionaire or us 3rd party
+
+TODO
+ - commenteket irni
+ - testeket irni
+ - homepage
+ - admin feluletre dashboard vagz lekertezes a regisytralasokbol
+
 
 To implement a new view:
  - create template for view (html)

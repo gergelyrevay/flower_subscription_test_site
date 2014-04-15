@@ -1,0 +1,12 @@
+<div class="main">
+
+        {% for answer_field in form %}
+            <div class="form-row">
+                <label class="{% if answer_field.field.required %} required {% endif %}">
+                    {{ answer_field.label }}. {{ answer_field.help_text }}
+                </label>
+                {{ answer_field }} {{ answer_field.errors }}
+            </div>
+        {% endfor %}
+
+</div>
