@@ -39,7 +39,6 @@ class Migration(SchemaMigration):
         db.create_table(u'signup_questionaire', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('name', self.gf('django.db.models.fields.CharField')(max_length=50)),
-            ('is_active', self.gf('django.db.models.fields.BooleanField')(default=False)),
         ))
         db.send_create_signal(u'signup', ['Questionaire'])
 
@@ -88,7 +87,6 @@ class Migration(SchemaMigration):
         u'signup.questionaire': {
             'Meta': {'object_name': 'Questionaire'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '50'}),
             'questions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['signup.Question']", 'symmetrical': 'False'})
         },
