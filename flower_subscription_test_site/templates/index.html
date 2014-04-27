@@ -1,5 +1,8 @@
 {% extends '_layouts/base.html' %}
 {% block page_content %}
-<h1> Hallo World</h1>
-<a href="{% url 'signup' %}"> Signup</a>
+        <div class='hero-unit' id='main-desc'>
+            <p>FIXME Ut faucibus, purus a porttitor convallis, est purus cursus justo, quis vulputate nisl lectus eu odio. Donec at ipsum nec massa aliquet dignissim. Nulla dolor purus, mollis id sapien eu, tincidunt pulvinar elit. Aenean molestie tempus lobortis. Etiam lobortis nisi non pharetra gravida. Proin tincidunt libero eu purus sagittis mollis. Nunc malesuada in erat ac faucibus. Phasellus non nisi orci. Curabitur volutpat est libero, vel gravida sem varius vel. Nulla sed elit et augue accumsan porttitor. Cras dignissim elit nec dui condimentum feugiat. In vehicula varius ante vel lacinia. Duis quis mauris tristique, mattis dolor eu, lobortis tellus. Etiam dui nulla, hendrerit eu leo quis, convallis volutpat lectus. Maecenas condimentum ultricies scelerisque.</p>
+            <a href={% url 'signup_with_questionaire' %} class="btn btn-large btn-success">Order</a>
+        </div>
 {% endblock %}
+ 

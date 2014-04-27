@@ -1,0 +1,27 @@
+
+{% load static %}
+<div class='' id='share-sidebar' style='background-color: #EEEEEE;
+    border-radius: 6px 6px 6px 6px; float:right; position:fixed; right:0px; top:230px; width:60px;margin:30px;'>
+    <ul class="" style='list-style:none; margin:0px; padding:15px;'>
+        <li class="share-icon">
+                <a  title='Share on Facebook'  href='http://www.facebook.com/sharer.php?u={{ request.build_absolute_uri|urlencode }}'  >
+                <img  src='{% static "img/facebook.png" %}'  height='30' width='30'  class='' alt='Facebook'  style='background: transparent no-repeat;padding:0;margin-bottom:7px;height:30px;width:30px;background-position:-51px 0px'   />
+            </a>
+        </li>
+        <li class="share-icon">
+            <a  title='Share on Google+'  href='https://plus.google.com/share?url={{ request.build_absolute_uri|urlencode }}'  >
+                <img  src='{% static "img/google+.png" %}'  height='30' width='30'  class='' alt='Google+'  style='background: transparent no-repeat;padding:0;margin-bottom:7px;height:30px;width:30px;background-position:-51px 0px'   />
+            </a>
+        </li>
+        <li class="share-icon">
+            <a  title='Pin it'  href='//pinterest.com/pin/create/button/?url={{ request.build_absolute_uri|urlencode }}&media=FIXME_picture&description=FIXME_description'  >
+                <img  src='{% static "img/pinterest.png" %}'  height='30' width='30'  class='' alt='Pinterest'  style='background: transparent no-repeat;padding:0;margin-bottom:7px;height:30px;width:30px;background-position:-51px 0px'   />
+            </a>
+        </li>
+        <li class="share-icon">
+            <a  title='Share on Twitter'  href='https://twitter.com/share?url={{ request.build_absolute_uri|urlencode }}&amp;text=FIXME_description'  >
+                <img  src='{% static "img/twitter.png" %}'  height='30' width='30'  class='' alt='Twitter'  style='background: transparent no-repeat;padding:0;height:30px;width:30px;background-position:-51px 0px'   />
+            </a>
+        </li>
+    </ul>
+</div>
