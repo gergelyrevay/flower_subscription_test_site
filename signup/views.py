@@ -5,6 +5,9 @@ from django.utils import timezone
 from django.core.urlresolvers import reverse_lazy
 from .forms import SignupWithQuestionaireForm, SignupForm
 from django.http import HttpResponseRedirect
+from django.contrib.messages.views import SuccessMessageMixin
+from django.contrib import messages
+
 
 # functions are views
 # def signup_list(request, *args, **kwargs):
@@ -17,23 +20,27 @@ from django.http import HttpResponseRedirect
 
 #   return render(request, template_name, context)
 
-class SignupCreate(CreateView):
+class SignupCreate(SuccessMessageMixin, CreateView):
     """ SignupCreate gives a form to sign up and saves the submitted forms.
-    It doesn|t involve the questionaire.
+    It doesn't involve the questionaire.
     """
     model = Signup
     template_name = 'signup_form.html'
     fields = ['email_address','feedback_text']
     success_url = reverse_lazy('signup')
+    success_message = 'The signup was successful, thank you!'
 
-class SignupCreateWithQuestionaire(FormView):
+
+class SignupCreateWithQuestionaire(SuccessMessageMixin, FormView):
     """ Signup with additional questionaire. The Signup form and
     the questionaire form are created and validated separately.
     """
     form_class = SignupWithQuestionaireForm
     signup_form_class = SignupForm
-    template_name = 'signup_form.html'
+    template_name = 'signup_with_questionaire_form.html'
     success_url = reverse_lazy('signup_with_questionaire')
+    success_message = 'The signup was successful, thank you!'
+
 
     def get_context_data(self, **kwargs):
         """ Creates the two separate forms for the HTML template.
@@ -60,7 +67,8 @@ class SignupCreateWithQuestionaire(FormView):
             answer = Answer(question=question, answer_text=answer_text, signup=signup)
             answer.save()
 
-        return HttpResponseRedirect(self.get_success_url())
+        context = self.get_context_data()
+        return self.render_to_response()
 
     def forms_invalid(self):
         return self.render_to_response(self.get_context_data())
