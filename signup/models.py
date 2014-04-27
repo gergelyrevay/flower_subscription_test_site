@@ -4,7 +4,7 @@ class Signup(models.Model):
     """ Simple signup with email and free text feedback.
     """
     signed_up_at = models.DateTimeField(auto_now_add=True, editable=False)
-    email_address = models.EmailField()
+    email_address = models.EmailField(unique=True)
     feedback_text = models.TextField()
 
 # defines ordering
