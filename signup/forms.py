@@ -4,6 +4,7 @@ import ipdb
 
 class SignupForm(forms.ModelForm):
     """basic form for signup"""
+
     class Meta:
         model = Signup
         fields = ['email_address','feedback_text']
